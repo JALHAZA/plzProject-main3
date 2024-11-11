@@ -16,19 +16,20 @@ public class Request {
     private Long requestId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name ="user_id")
+    @JoinColumn(name ="user_id",nullable = false) // 외래키 매핑
     private User user;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name ="post_id")
+    @JoinColumn(name ="post_id",nullable = false) // 외래키 매핑
     private Post post;
+
     private String title;
 
     @Column(nullable = false,length = 2000)
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "request_status_id")
+    @JoinColumn(name = "request_status_id",nullable = false) // 외래키 매핑
     private RequestStatus requestStatus;
 
     @CreationTimestamp

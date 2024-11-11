@@ -16,10 +16,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PrincipalDetailService implements UserDetailsService {
     private final UserRepository userRepository; //인증처리할때 userdetailservice를 통해서 username이 DB에 있는지만 확인하면 됨
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("loadUserByUsername");
-        User user = userRepository.findByUsername(username);
+
+        // Optional로 사용자 조회
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("해당 사용자가 존재하지 않습니다:"+username));
         if(user==null){
            return null;
         }

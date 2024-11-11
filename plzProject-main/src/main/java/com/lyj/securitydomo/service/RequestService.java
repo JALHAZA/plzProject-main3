@@ -8,4 +8,6 @@ import java.util.List;
 public interface RequestService {
     List<RequestDTO> getRequests();
     void saveRequest(Request request);
+
+    void saveRequest(long postId, String title, String content);
 }

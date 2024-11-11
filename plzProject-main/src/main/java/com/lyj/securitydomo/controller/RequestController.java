@@ -29,9 +29,13 @@ public class RequestController {
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<String> saveRequest(@RequestBody Request request) {
-        requestService.saveRequest(request);
-        return ResponseEntity.ok("신청이 완료되었습니다.");
+    public ResponseEntity<String> saveRequest(@RequestBody RequestDTO requestDTO) {
+       try {
+           requestService.saveRequest(requestDTO.getPostId(),requestDTO.getTitle(),requestDTO.getContent());
+           return ResponseEntity.ok("신청이 완료되었습니다.");
+       }catch (IllegalArgumentException e){
+           return ResponseEntity.badRequest().body(e.getMessage());
+       }
     }
 
     @GetMapping("/list")

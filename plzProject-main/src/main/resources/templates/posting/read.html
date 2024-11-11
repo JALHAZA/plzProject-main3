@@ -137,7 +137,7 @@
 
         // 신청하기 모달 열기 이벤트
         document.getElementById('requestModal').addEventListener('show.bs.modal', function (event) {
-            const postId = /*[[${post.postId}]]*/ '[[${post.postId}]]'; // Thymeleaf 변수
+            const postId = '[[${post.postId}]]'; // Thymeleaf 변수
 
             // 신청하기 버튼 클릭 시 처리
             document.getElementById('submitRequest').onclick = function () {

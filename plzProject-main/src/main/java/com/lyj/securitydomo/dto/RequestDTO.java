@@ -1,13 +1,26 @@
 package com.lyj.securitydomo.dto;
 
-public class RequestDTO {
-    private String username;
-    private String pcontent;
-    private String content;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public RequestDTO(String username, String pcontent, String content) {
-        this.username = username;
-        this.pcontent = pcontent;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class RequestDTO {
+    private Long postId;
+    private String title;
+    private String content;
+    private String username;
+    private String contentText;
+
+    public RequestDTO(String content, String username, String contentText) {
         this.content = content;
+        this.username = username;
+        this.contentText = contentText;
     }
+
 }
+
+

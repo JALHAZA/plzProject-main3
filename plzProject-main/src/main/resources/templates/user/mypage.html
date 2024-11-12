@@ -5,49 +5,49 @@
 
 <div layout:fragment="content">
   <div class="container">
-    <h3>JOIN</h3>
-    <form action="/user/register" method="post">
-
-      <!-- 이름 입력 필드 -->
+    <h3>My Page</h3>
+    <form action="/user/update" method="post">
+      <input type="hidden" name="id" th:value="${user.id}">
+      <!-- 이름 수정 필드 -->
       <div class="form-group mt-3">
         <label for="name">이름:</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+        <input type="text" class="form-control" id="name" name="name" th:value="${user.name}" required>
       </div>
 
-      <!-- 생년월일 입력 필드 -->
+      <!-- 생년월일 수정 필드 -->
       <div class="form-group mt-3">
         <label for="birthDate">생년월일:</label>
-        <input type="date" class="form-control" id="birthDate" name="birthDate" required>
+        <input type="text" class="form-control" id="birthDate" name="birthDate" th:value="${user.birthDate}" placeholder="날짜 선택" required>
       </div>
 
-      <!-- 사용자명 입력 필드 -->
+      <!-- 사용자명 수정 필드 -->
       <div class="form-group mt-3">
         <label for="username">아이디:</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
+        <input type="text" class="form-control" id="username" name="username" th:value="${user.username}" required readonly>
       </div>
 
-      <!-- 비밀번호 입력 필드 -->
+      <!-- 비밀번호 수정 필드 -->
       <div class="form-group mt-3">
         <label for="password">비밀번호:</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+        <input type="password" class="form-control" id="password" name="password" placeholder="새 비밀번호를 입력하세요">
       </div>
 
-      <!-- 이메일 입력 필드 -->
+      <!-- 이메일 수정 필드 -->
       <div class="form-group mt-3">
         <label for="email">이메일:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+        <input type="email" class="form-control" id="email" name="email" th:value="${user.email}" required>
       </div>
 
-      <!-- 성별 입력 필드 -->
+      <!-- 성별 수정 필드 -->
       <div class="form-group mt-3">
         <label for="gender">성별:</label>
-        <input type="text" class="form-control" id="gender" placeholder="Enter gender" name="gender" required>
+        <input type="text" class="form-control" id="gender" name="gender" th:value="${user.gender}" required>
       </div>
 
       <!-- 주소 시 선택 필드 -->
       <div class="form-group mt-3">
         <label for="city">시:</label>
-        <select class="form-control" id="city" name="city" required onchange="updateDistricts()">
+        <select class="form-control" id="city" name="city" required onchange="updateDistricts()" th:value="${user.city}">
           <option value="">시를 선택하세요</option>
           <option value="서울">서울</option>
           <option value="부산">부산</option>
@@ -60,7 +60,7 @@
       <!-- 주소 구 선택 필드 -->
       <div class="form-group mt-3">
         <label for="state">구:</label>
-        <select class="form-control" id="state" name="state" required>
+        <select class="form-control" id="state" name="state" required th:value="${user.state}">
           <option value="">구를 선택하세요</option>
           <!-- 구 옵션들은 JavaScript로 동적으로 추가됩니다 -->
         </select>
@@ -96,16 +96,16 @@
           }
         }
       </script>
-
-      <!-- 폼 제출 및 초기화 버튼 -->
+      <!-- 저장 및 취소 버튼 -->
       <div class="form-group mt-3">
-        <button type="submit" class="btn btn-primary">Register</button>
-        <button type="reset" class="btn btn-secondary">Reset</button>
+        <button type="submit" class="btn btn-primary">저장</button>
+        <button type="reset" class="btn btn-secondary">취소</button>
       </div>
-
     </form>
   </div>
 </div>
 
 <script layout:fragment="script" th:inline="javascript">
 </script>
+
+</html>
